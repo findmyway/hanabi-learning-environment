@@ -13,3 +13,5 @@ add_executable (game_example game_example.cc)
 target_link_libraries (game_example LINK_PUBLIC hanabi)
 
 install(TARGETS pyhanabi LIBRARY DESTINATION lib)
+install(FILES pyhanabi.h DESTINATION include)
+install(DIRECTORY hanabi_lib/ DESTINATION include FILES_MATCHING PATTERN "*.h")
