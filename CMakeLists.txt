@@ -11,3 +11,5 @@ target_link_libraries (pyhanabi LINK_PUBLIC hanabi)
 
 add_executable (game_example game_example.cc)
 target_link_libraries (game_example LINK_PUBLIC hanabi)
+
+install(TARGETS pyhanabi LIBRARY DESTINATION lib)
