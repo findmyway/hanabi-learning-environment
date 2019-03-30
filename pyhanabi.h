@@ -189,6 +189,10 @@ char* ObservationShape(pyhanabi_observation_encoder_t* encoder);
 char* EncodeObservation(pyhanabi_observation_encoder_t* encoder,
                         pyhanabi_observation_t* observation);
 
+void EncodeObs(pyhanabi_observation_encoder_t *encoder,
+               pyhanabi_observation_t *observation,
+               int *encoding);
+
 } /* extern "C" */
 
 #endif

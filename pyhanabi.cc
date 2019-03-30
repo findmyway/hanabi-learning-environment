@@ -857,4 +857,21 @@ char* EncodeObservation(pyhanabi_observation_encoder_t* encoder,
   return strdup(obs_str.c_str());
 }
 
+void EncodeObs(pyhanabi_observation_encoder_t *encoder,
+               pyhanabi_observation_t *observation,
+               int* out_encoding) {
+  REQUIRE(encoder != nullptr);
+  REQUIRE(encoder->encoder != nullptr);
+  REQUIRE(observation != nullptr);
+  REQUIRE(observation->observation != nullptr);
+  auto obs_enc = reinterpret_cast<hanabi_learning_env::ObservationEncoder*>(
+      encoder->encoder);
+  auto obs = reinterpret_cast<hanabi_learning_env::HanabiObservation*>(
+      observation->observation);
+  std::vector<int> encoding = obs_enc->Encode(*obs);
+  for (int i = 0; i < encoding.size(); i++) {
+    out_encoding[i] = encoding[i];
+  }
+}
+
 } /* extern "C" */
